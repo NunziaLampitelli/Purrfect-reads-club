@@ -1,0 +1,15 @@
+html {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: #F28B82;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Oriental Cats Light", "Baloo", "Verdana";
+  font-size: 2rem;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}

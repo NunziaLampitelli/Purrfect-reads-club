@@ -1,0 +1,8 @@
+header {
+  min-height: 25vh;
+  min-width: 80vw;
+  color: white;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

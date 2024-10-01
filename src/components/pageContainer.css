@@ -1,0 +1,52 @@
+.page-container {
+  min-width: 50vw;
+  max-width: 70vw;
+  display: flex;
+  margin-inline: auto;
+  justify-content: space-between;
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  color: black;
+  font-family: "Marianne", "Baloo", "Verdana";
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding-top: 0.2rem;
+  min-width: 7.5rem;
+  max-width: 7.5rem;
+}
+
+a:first-child {
+  background-color: #8ED3D3;
+  border-radius: 8px;
+  border: solid, black, 2px;
+  box-shadow:  0px 4px 4px 0px rgba(0, 0, 0, 0.25),  
+        inset 0px 4px 4px 0px rgba(255, 255, 255, 1);  
+}
+
+.book-catalogue {
+  border-radius: 8px;
+   background-color: #C2FFD9;
+     border: solid, black, 2px;
+box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),  
+        inset 0px 4px 4px 0px rgba(255, 255, 255, 1);  
+}
+
+.cattastic-stories {
+  background-color: #B2EBF2;
+    border: solid, black, 2px;
+    border-radius: 8px;
+    box-shadow:  0px 4px 4px 0px rgba(0, 0, 0, 0.25),  
+        inset 0px 4px 4px 0px rgba(255, 255, 255, 1); 
+}
+
+.purrsonal-space {
+  background-color: #C4C4E1;
+  border-radius: 8px;
+  border: solid, black, 2px;
+  box-shadow:  0px 4px 4px 0px rgba(0, 0, 0, 0.25),  
+        inset 0px 4px 4px 0px rgba(255, 255, 255, 1); 
+}
