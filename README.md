@@ -1,50 +1,14 @@
-# React + TypeScript + Vite
+# Purrfect Reads Club
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the last individual project to develop using what we have learned in the last months.
 
-Currently, two official plugins are available:
+I decided to create something similar to my last project but with more functions and a better styling.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+I decided to use the Google Books API to make a personal library where people can search books and then add them in a favorites page.
 
-## Expanding the ESLint configuration
+There will be a login form and it will be developed with React+JSX.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This project at the moment is related to the idea of a club for people who like both reading and cats.
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+A sketch of the design can be seen clicking on this link:
+[text](https://www.figma.com/design/OGdfZkBoj76xw7MDokZviZ/Untitled?node-id=0-1&t=BHpvfE6owT0WCd3I-1)
