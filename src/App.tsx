@@ -1,10 +1,10 @@
 import React from "react";
-import Homepage from "./pages/Homepage";
+import AppRouter from "./router";
 
 const App: React.FC = () => {
 	return (
 		<div>
-			<Homepage />
+			<AppRouter />
 		</div>
 	);
 };
