@@ -11,4 +11,4 @@ There will be a login form and it will be developed with React+JSX.
 This project at the moment is related to the idea of a club for people who like both reading and cats.
 
 A sketch of the design can be seen clicking on this link:
-[text](https://www.figma.com/design/OGdfZkBoj76xw7MDokZviZ/Untitled?node-id=0-1&t=BHpvfE6owT0WCd3I-1)
+[Figma sketch](https://www.figma.com/design/OGdfZkBoj76xw7MDokZviZ/Untitled?node-id=0-1&t=BHpvfE6owT0WCd3I-1)
