@@ -1,0 +1,44 @@
+.navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 0; 
+  box-sizing: border-box; 
+  position: relative; /* needed this position to put Links above the container */
+  z-index: 10; 
+}
+
+a {
+  color: black;
+  padding-top: 0.2rem;
+  font-family: "Marianne", "Baloo", "Verdana";
+  text-decoration: none;
+  font-size: 1.5rem;
+  max-width: 7.5rem;
+  text-align: center;
+  flex: 1; 
+  margin-bottom: -1rem;
+}
+
+.cat-login, .book-catalogue, .cattastic-stories, .purrsonal-space {
+  border-radius: 8px;
+  border: 2px solid black; 
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),  
+              inset 0px 4px 4px 0px rgba(255, 255, 255, 1);  
+}
+
+.cat-login {
+  background-color: #8ED3D3;
+}
+
+.book-catalogue {
+   background-color: #C2FFD9;
+}
+
+.cattastic-stories {
+  background-color: #B2EBF2;
+}
+
+.purrsonal-space {
+  background-color: #C4C4E1;
+}

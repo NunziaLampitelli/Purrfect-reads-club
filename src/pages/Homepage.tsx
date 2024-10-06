@@ -1,12 +1,7 @@
-import Header from "../components/header";
-import PageContainer from "../components/pageContainer";
-import React from 'react';
 
-const Homepage: React.FC = () => {
+function Homepage() {
 	return (
 		<div>
-			<Header />
-			<PageContainer />
 		</div>
 	);
 };

@@ -1,13 +1,8 @@
-import React from "react";
-import Header from "../components/header";
-import PageContainer from "../components/pageContainer";
 
-const LoginPage: React.FC = () => {
+function LoginPage() {
   return (
     <div>
-      <Header />
-      <PageContainer />
-    </div>
+      </div>
   );
 };
 

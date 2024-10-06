@@ -1,6 +1,6 @@
 import "./header.css";
 
-const Header: React.FC = () => {
+function Header() {
 	return (
 		<header>
 			<h1>Purrfect Reads Club</h1>
