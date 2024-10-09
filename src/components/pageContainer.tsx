@@ -1,18 +1,15 @@
-import React from "react";
+import { Outlet } from "react-router-dom";
 import "./pageContainer.css";
 
-interface PageContainerProps {
-  children: React.ReactNode; 
-}
-
-function PageContainer({ children }: PageContainerProps) {
-  return (
-    <div className="page-container">
-      <section className="content">
-        {children}  
-      </section>
-    </div>
-  );
+function PageContainer() {
+	return (
+		<div className="page-container">
+			<section className="content">
+				<Outlet />{" "}
+				{/* Qui viene gestito il rendering dinamico in base alla route */}
+			</section>
+		</div>
+	);
 }
 
 export default PageContainer;

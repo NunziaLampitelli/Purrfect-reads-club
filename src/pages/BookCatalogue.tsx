@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import IBook from '../interfaces/IBook'
-import PageContainer from '../components/pageContainer';
 
 
 function BookCatalogue() {
@@ -22,8 +21,7 @@ function BookCatalogue() {
 	};
 
 	return (
-		<PageContainer>
-			<div className="book-search">
+					<div className="book-search">
 				<form className="search-field" onSubmit={handleSearch}>
 					<input
 						type="text"
@@ -56,7 +54,6 @@ function BookCatalogue() {
 					)}
 				</div>
 			</div>
-		</PageContainer>
 	);
 }
 
