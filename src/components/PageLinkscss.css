@@ -6,15 +6,15 @@
   box-sizing: border-box; 
   position: relative; /* needed this position to put Links above the container */
   z-index: 10; 
-}
+  }
 
 a {
   color: black;
   padding-top: 0.2rem;
   font-family: "Marianne", "Baloo", "Verdana";
   text-decoration: none;
-  font-size: 1.5rem;
-  max-width: 7.5rem;
+  font-size: 3.2rem;
+  max-width: 15rem;
   text-align: center;
   flex: 1; 
   margin-bottom: -1rem;

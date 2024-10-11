@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import IBook from '../interfaces/IBook'
+import "./css/BookCatalogue.css";
 
 
 function BookCatalogue() {
@@ -24,18 +25,15 @@ function BookCatalogue() {
 					<div className="book-search">
 				<form className="search-field" onSubmit={handleSearch}>
 					<input
-						type="text"
-						placeholder="Write book info here"
-						value={searchItem}
-						onChange={(event) => setSearchItem(event.target.value)}
+						type="text"	placeholder="Write book info here" value={searchItem} onChange={(event) => setSearchItem(event.target.value)}
 					/>
 					<button type="submit">Search</button>
 				</form>
-				<div>
+				<div className='book-list'>
 					{books.length > 0 ? (
-						<ul>
+						<ul className='grid-container'>
 							{books.map((book) => (
-								<li key={book.id}>
+								<li key={book.id} className='grid-item'>
 									{book.volumeInfo.imageLinks?.thumbnail ? (
 										<img
 											src={book.volumeInfo.imageLinks.thumbnail}
@@ -44,7 +42,7 @@ function BookCatalogue() {
 									) : (
 										<p>No image available</p>
 									)}
-									<h2>{book.volumeInfo.title}</h2>
+									<h5>{book.volumeInfo.title}</h5>
 									<p>{book.volumeInfo.authors?.join(", ")}</p>
 								</li>
 							))}

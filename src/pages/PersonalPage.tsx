@@ -1,13 +1,9 @@
-import { Outlet } from "react-router-dom";
-
-function PageContainer() {
+function PersonalPage() {
 	return (
 		<div>
-			<h2>Welcome to the PageContainer</h2>
-			<Outlet />{" "}
-			{/* Qui verranno renderizzati i contenuti delle rotte figlie */}
+			<h1>Personal Page</h1>
 		</div>
 	);
 }
 
-export default PageContainer;
+export default PersonalPage;

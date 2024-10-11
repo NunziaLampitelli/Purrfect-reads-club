@@ -4,6 +4,7 @@ header {
   color: white;
   align-items: center;
   display: flex;
-  justify-content: center
+  justify-content: center;
+  font-size: 2rem;
   
 }
