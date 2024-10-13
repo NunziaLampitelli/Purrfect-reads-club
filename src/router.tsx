@@ -7,6 +7,7 @@ import PageLinks from "./components/PageLinks";
 import Header from "./components/header";
 import PageContainer from "./components/pageContainer";
 import PersonalPage from "./pages/PersonalPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function AppRouter() {
 	return (
@@ -14,11 +15,11 @@ function AppRouter() {
 			<Header />
 			<PageLinks />
 			<Routes>
-				{/* PageContainer è il layout principale e renderizza i figli tramite Outlet */}
+				{/* this is to have the content of every page inside the pagecontainer */}
 				<Route path="/" element={<PageContainer />}>
-					{/* Route con index per Homepage */}
 					<Route index element={<Homepage />} />
 					<Route path="login" element={<LoginPage />} />
+					<Route path="register" element= {<RegisterPage />} />
 					<Route path="book-catalogue" element={<BookCatalogue />} />
 					<Route path="favorites" element={<FavoritesPage />} />
 					<Route path="personal-page" element={<PersonalPage />} />
