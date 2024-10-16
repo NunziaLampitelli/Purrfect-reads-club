@@ -47,12 +47,18 @@
 }
 
 .grid-item {
-  background-color: #ffffff; 
+  background-color: #BFD3D3; 
   padding-top: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
   text-align: center;
-  border: 2px solid black;
+  border: 2px solid rgba(0, 0, 0, 0.393);
+  transition: transform 0.2s; 
+}
+
+.grid-item:hover {
+  transform: scale(1.05); 
+  cursor: pointer; 
 }
 
 .grid-item img {
@@ -60,7 +66,7 @@
   min-height: 250px;
   max-height: 250px;
   border-radius: 4px;
-  border: 2px solid black;
+  border: 2px solid #666;
 }
 
 .grid-item h5 {
