@@ -7,7 +7,9 @@ import PageLinks from "./components/PageLinks";
 import Header from "./components/header";
 import PageContainer from "./components/pageContainer";
 import PersonalPage from "./pages/PersonalPage";
+import DeleteAccountPage from "./pages/DeleteAccountPage";
 import RegisterPage from "./pages/RegisterPage";
+import BookInfoPage from "./pages/BookInfoPage";
 
 function AppRouter() {
 	return (
@@ -19,10 +21,12 @@ function AppRouter() {
 				<Route path="/" element={<PageContainer />}>
 					<Route index element={<Homepage />} />
 					<Route path="login" element={<LoginPage />} />
-					<Route path="register" element= {<RegisterPage />} />
+					<Route path="register" element={<RegisterPage />} />
 					<Route path="book-catalogue" element={<BookCatalogue />} />
+					<Route path="/book/:id" element={<BookInfoPage />} /> {/* here it uses the id of the book to catch the data and open the page*/}
 					<Route path="favorites" element={<FavoritesPage />} />
 					<Route path="personal-page" element={<PersonalPage />} />
+					<Route path="delete-account" element={<DeleteAccountPage />} />
 				</Route>
 			</Routes>
 		</Router>

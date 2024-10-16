@@ -45,7 +45,7 @@ function RegisterPage() {
 		setUsername("");
 		setPassword("");
 		setConfirmPassword("");
-		setErrorMessage("");
+		setErrorMessage(null);
 
 		setTimeout(() => {
 			navigate("/login"); 
@@ -64,11 +64,11 @@ function RegisterPage() {
     </div>
     <div>
       <label>Password:</label>
-      <input type="text" value={password} onChange={(event) => setPassword(event.target.value)} required />
+      <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} required />
     </div>
     <div>
       <label>Confirm Password:</label>
-      <input type="text" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} required />
+      <input type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} required />
     </div>
       <button type="submit">Register</button>
       </form>

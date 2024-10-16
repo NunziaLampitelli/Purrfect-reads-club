@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import IBook from '../interfaces/IBook'
+import React, { useState } from "react";
+import { Link } from "react-router-dom"; // Importa Link
+import IBook from "../interfaces/IBook";
 import "./css/BookCatalogue.css";
-
 
 function BookCatalogue() {
 	const [searchItem, setSearchItem] = useState("");
@@ -9,7 +9,7 @@ function BookCatalogue() {
 
 	const handleSearch = async (event: React.FormEvent) => {
 		event.preventDefault();
-		const apiKey = "AIzaSyBgXLpVU0ypFCl4qpu_bLMMeGXjBLLDiqc"; 
+		const apiKey = "AIzaSyBgXLpVU0ypFCl4qpu_bLMMeGXjBLLDiqc";
 		const url = `https://www.googleapis.com/books/v1/volumes?q=${searchItem}&key=${apiKey}`;
 
 		try {
@@ -22,18 +22,24 @@ function BookCatalogue() {
 	};
 
 	return (
-					<div className="book-search">
-				<form className="search-field" onSubmit={handleSearch}>
-					<input
-						type="text"	placeholder="Write book info here" value={searchItem} onChange={(event) => setSearchItem(event.target.value)}
-					/>
-					<button type="submit">Search</button>
-				</form>
-				<div className='book-list'>
-					{books.length > 0 ? (
-						<ul className='grid-container'>
-							{books.map((book) => (
-								<li key={book.id} className='grid-item'>
+		<div className="book-search">
+			<form className="search-field" onSubmit={handleSearch}>
+				<input
+					type="text"
+					placeholder="Write book info here"
+					value={searchItem}
+					onChange={(event) => setSearchItem(event.target.value)}
+				/>
+				<button type="submit">Search</button>
+			</form>
+			<div className="book-list">
+				{books.length > 0 ? (
+					<ul className="grid-container">
+						{books.map((book) => (
+							<li key={book.id} className="grid-item">
+								<Link to={`/book/${book.id}`}>
+									{" "}
+									{/* Aggiungi il link ai dettagli del libro */}
 									{book.volumeInfo.imageLinks?.thumbnail ? (
 										<img
 											src={book.volumeInfo.imageLinks.thumbnail}
@@ -44,14 +50,15 @@ function BookCatalogue() {
 									)}
 									<h5>{book.volumeInfo.title}</h5>
 									<p>{book.volumeInfo.authors?.join(", ")}</p>
-								</li>
-							))}
-						</ul>
-					) : (
-						<p>No books found</p>
-					)}
-				</div>
+								</Link>
+							</li>
+						))}
+					</ul>
+				) : (
+					<p>No books found</p>
+				)}
 			</div>
+		</div>
 	);
 }
 
