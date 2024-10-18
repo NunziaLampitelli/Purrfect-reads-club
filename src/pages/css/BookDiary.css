@@ -1,0 +1,28 @@
+.search-results {
+	max-height: 150px;
+	overflow-y: scroll;
+	border: 1px solid #ccc;
+}
+
+.search-item {
+	cursor: pointer;
+	padding: 5px;
+	background: #f9f9f9;
+}
+
+.book-thumbnail {
+	width: 100px;
+	height: auto;
+}
+
+.rating button {
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+.star-gold {
+	color: gold;
+}
+.star-gray {
+	color: gray;
+}

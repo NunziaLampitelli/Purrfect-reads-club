@@ -39,7 +39,7 @@ function BookCatalogue() {
 							<li key={book.id} className="grid-item">
 								<Link to={`/book/${book.id}`}>
 									{" "}
-									{/* Aggiungi il link ai dettagli del libro */}
+									{/* this is to have links for the books*/}
 									{book.volumeInfo.imageLinks?.thumbnail ? (
 										<img
 											src={book.volumeInfo.imageLinks.thumbnail}

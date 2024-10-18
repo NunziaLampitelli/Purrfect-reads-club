@@ -10,6 +10,7 @@ import PersonalPage from "./pages/PersonalPage";
 import DeleteAccountPage from "./pages/DeleteAccountPage";
 import RegisterPage from "./pages/RegisterPage";
 import BookInfoPage from "./pages/BookInfoPage";
+import BookDiary from "./pages/BookDiary";
 
 function AppRouter() {
 	return (
@@ -26,6 +27,7 @@ function AppRouter() {
 					<Route path="/book/:id" element={<BookInfoPage />} /> {/* here it uses the id of the book to catch the data and open the page*/}
 					<Route path="favorites" element={<FavoritesPage />} />
 					<Route path="personal-page" element={<PersonalPage />} />
+					<Route path= "book-diary" element={<BookDiary />} />
 					<Route path="delete-account" element={<DeleteAccountPage />} />
 				</Route>
 			</Routes>
