@@ -10,11 +10,12 @@ function FavoritesPage() {
 		const storedFavorites = JSON.parse(
 			localStorage.getItem("favorites") || "[]"
 		);
+		console.log("Stored favorites:", storedFavorites); // I was having issues with the page so I needed to check with a debug 
 		setFavorites(storedFavorites);
 	}, []);
 
 	const handleBookClick = (bookId: string) => {
-		navigate(`/book/${bookId}`); // 
+		navigate(`/book/${bookId}`);
 	};
 
 	if (favorites.length === 0) {
@@ -31,18 +32,22 @@ function FavoritesPage() {
 						className="grid-item"
 						onClick={() => handleBookClick(book.id)}
 					>
-						{book.volumeInfo.imageLinks?.thumbnail && (
+						{book.volumeInfo?.imageLinks?.thumbnail ? (
 							<img
 								src={book.volumeInfo.imageLinks.thumbnail}
 								alt={`${book.volumeInfo.title} thumbnail`}
 							/>
+						) : (
+							<p>No image available</p>
 						)}
-						<h5>{book.volumeInfo.title}</h5>
+						<h5>{book.volumeInfo?.title || "No title available"}</h5>
 						<p>
-							<strong>Authors:</strong> {book.volumeInfo.authors?.join(", ")}
+							<strong>Authors:</strong>{" "}
+							{book.volumeInfo?.authors?.join(", ") || "Unknown authors"}
 						</p>
 						<p>
-							<strong>Pages:</strong> {book.volumeInfo.pageCount}
+							<strong>Pages:</strong>{" "}
+							{book.volumeInfo?.pageCount || "Unknown page count"}
 						</p>
 					</div>
 				))}

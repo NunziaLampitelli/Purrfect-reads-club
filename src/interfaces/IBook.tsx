@@ -10,4 +10,5 @@ export default interface IBook {
 		pageCount?: number;
 		categories?: string[];
 	};
+	thumbnail?: string; // Aggiunto per BookDiary
 }
