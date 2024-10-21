@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { SearchProvider } from "./searchContext"; // Assicurati di avere il percorso corretto
 import Homepage from "./pages/Homepage";
 import BookCatalogue from "./pages/BookCatalogue";
 import LoginPage from "./pages/LoginPage";
@@ -17,20 +18,23 @@ function AppRouter() {
 		<Router>
 			<Header />
 			<PageLinks />
-			<Routes>
-				{/* this is to have the content of every page inside the pagecontainer */}
-				<Route path="/" element={<PageContainer />}>
-					<Route index element={<Homepage />} />
-					<Route path="login" element={<LoginPage />} />
-					<Route path="register" element={<RegisterPage />} />
-					<Route path="book-catalogue" element={<BookCatalogue />} />
-					<Route path="/book/:id" element={<BookInfoPage />} /> {/* here it uses the id of the book to catch the data and open the page*/}
-					<Route path="favorites" element={<FavoritesPage />} />
-					<Route path="personal-page" element={<PersonalPage />} />
-					<Route path= "book-diary" element={<BookDiary />} />
-					<Route path="delete-account" element={<DeleteAccountPage />} />
-				</Route>
-			</Routes>
+			<SearchProvider>
+				<Routes>
+					{/* this is to have the content of every page inside the pagecontainer */}
+					<Route path="/" element={<PageContainer />}>
+						<Route index element={<Homepage />} />
+						<Route path="login" element={<LoginPage />} />
+						<Route path="register" element={<RegisterPage />} />
+						<Route path="book-catalogue" element={<BookCatalogue />} />
+						<Route path="/book/:id" element={<BookInfoPage />} />{" "}
+						{/* here it uses the id of the book to catch the data and open the page*/}
+						<Route path="favorites" element={<FavoritesPage />} />
+						<Route path="personal-page" element={<PersonalPage />} />
+						<Route path="book-diary" element={<BookDiary />} />
+						<Route path="delete-account" element={<DeleteAccountPage />} />
+					</Route>
+				</Routes>
+			</SearchProvider>
 		</Router>
 	);
 }

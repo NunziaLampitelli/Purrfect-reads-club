@@ -66,27 +66,32 @@ function BookInfoPage() {
 		book.volumeInfo;
 
 	return (
-		<div>
-			<h1>{title}</h1>
-			{imageLinks?.thumbnail && (
-				<img src={imageLinks.thumbnail} alt={`${title} thumbnail`} />
-			)}
-			<p>
-				<strong>Authors:</strong> {authors?.join(", ") || "Unknown"}
-			</p>
-			<p>
-				<strong>Description:</strong>{" "}
-				{description || "No description available"}
-			</p>
-			<p>
-				<strong>Pages:</strong> {pageCount || "Not specified"}
-			</p>
-			<p>
-				<strong>Genre:</strong> {categories?.join(", ") || "No genre available"}
-			</p>
-			<button onClick={toggleFavorite}>
-				{isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-			</button>
+		<div className="book-info-page-container">
+			<img
+				className="book-info-img"
+				src={imageLinks?.thumbnail}
+				alt={`${title} thumbnail`}
+			/>
+			<div className="book-info-content">
+				<h1>{title}</h1>
+				<p>
+					<strong>Authors:</strong> {authors?.join(", ") || "Unknown"}
+				</p>
+				<p>
+					<strong>Description:</strong>{" "}
+					{description || "No description available"}
+				</p>
+				<p>
+					<strong>Pages:</strong> {pageCount || "Not specified"}
+				</p>
+				<p>
+					<strong>Genre:</strong>{" "}
+					{categories?.join(", ") || "No genre available"}
+				</p>
+				<button onClick={toggleFavorite}>
+					{isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+				</button>
+			</div>
 		</div>
 	);
 }

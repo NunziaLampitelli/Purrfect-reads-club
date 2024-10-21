@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import IUser from "../interfaces/IUser";
+import "./css/LoginPage.css";
+import loginIcon from "../assets/login-paw.png"; // Assegna il file PNG a una variabile
+
 
 function LoginPage() {
 	const [username, setUsername] = useState<string>("");
@@ -37,39 +40,42 @@ function LoginPage() {
 	};
 
 	return (
-		<div>
-			<h2>Login</h2>
+		<div className="login-container">
 			{currentUser ? (
-				<p>Welcome back, {currentUser}!</p> 
+				<p>Welcome back, {currentUser}!</p>
 			) : (
 				<>
 					{errorMessage && <p>{errorMessage}</p>}
-					<form onSubmit={handleLogin}>
+					<form className="login-form" onSubmit={handleLogin}>
 						<div>
-							<label htmlFor="username">Username:</label>
+							<label htmlFor="username">Enter meowsername</label>
 							<input
 								type="text"
 								id="username"
+								placeholder="Write your username here"
 								value={username}
 								onChange={(event) => setUsername(event.target.value)}
 								required
 							/>
 						</div>
 						<div>
-							<label htmlFor="password">Password:</label>
+							<label htmlFor="password">Enter pawssword</label>
 							<input
 								type="password"
 								id="password"
+								placeholder="Write your password here"
 								value={password}
 								onChange={(event) => setPassword(event.target.value)}
 								required
 							/>
 						</div>
-						<button type="submit">Login</button>
+						<button className="login-button" type="submit">
+							<img src={loginIcon} alt="Login Icon" className="icon" />
+						</button>
 					</form>
 				</>
 			)}
-			<Link to="/register">Register</Link>
+			<p> If you don't have one, you can register a new account <Link to="/register" className="login-register-link">here</Link> </p>
 		</div>
 	);
 }

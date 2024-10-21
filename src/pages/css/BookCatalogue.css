@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
 
 .page-container {
   min-width: 50vw;
@@ -72,11 +73,11 @@
 .grid-item h5 {
   font-size: 1rem;
   margin: 10px 0;
-  font-family: "Delius Swash Caps";
+  font-family: "Baloo 2";
 }
 
 .grid-item p {
   color: #666;
-  font-family: "Delius Swash Caps";
+  font-family: "Baloo 2";
   font-size: 1rem;
 }

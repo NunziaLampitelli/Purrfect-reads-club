@@ -1,24 +1,36 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom"; 
+import { useEffect, useState, FormEvent } from "react";
+import { Link } from "react-router-dom";
 import IBook from "../interfaces/IBook";
+import { useSearch } from "../searchContext"; 
 import "./css/BookCatalogue.css";
 
 function BookCatalogue() {
-	const [searchItem, setSearchItem] = useState("");
+	const { searchItem, setSearchItem } = useSearch(); 
 	const [books, setBooks] = useState<IBook[]>([]);
 
-	const handleSearch = async (event: React.FormEvent) => {
-		event.preventDefault();
-		const apiKey = "AIzaSyBgXLpVU0ypFCl4qpu_bLMMeGXjBLLDiqc";
-		const url = `https://www.googleapis.com/books/v1/volumes?q=${searchItem}&key=${apiKey}`;
+	useEffect(() => {
+		const fetchBooks = async () => {
+			if (searchItem) {
+				const apiKey = "AIzaSyBgXLpVU0ypFCl4qpu_bLMMeGXjBLLDiqc"; 
+				const url = `https://www.googleapis.com/books/v1/volumes?q=${searchItem}&key=${apiKey}`;
 
-		try {
-			const response = await fetch(url);
-			const data = await response.json();
-			setBooks(data.items || []);
-		} catch (error) {
-			console.error(`There was an error in the search`);
-		}
+				try {
+					const response = await fetch(url);
+					const data = await response.json();
+					console.log("Fetched books:", data.items); 
+					setBooks(data.items || []);
+				} catch (error) {
+					console.error(`There was an error in the search:`, error);
+				}
+			}
+		};
+
+		fetchBooks(); 
+	}, [searchItem]); 
+
+	const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		// Non è più necessario fare la chiamata API qui
 	};
 
 	return (
@@ -38,8 +50,6 @@ function BookCatalogue() {
 						{books.map((book) => (
 							<li key={book.id} className="grid-item">
 								<Link to={`/book/${book.id}`}>
-									{" "}
-									{/* this is to have links for the books*/}
 									{book.volumeInfo.imageLinks?.thumbnail ? (
 										<img
 											src={book.volumeInfo.imageLinks.thumbnail}
