@@ -4,7 +4,7 @@ function Homepage() {
 		<div className="homepage-container">
 			<h1> Welcome to Purrfect Reads Club!</h1>
 			<p>
-				This project was created for all book and cat lovers. 
+				This project was created for book and cat lovers. 
 				With the integration of the Google Books API, you can search for books and explore informations about them. 
 				By creating an account, you can also be able to: </p>
 				<ul>

@@ -45,10 +45,6 @@ function FavoritesPage() {
 							<strong>Authors:</strong>{" "}
 							{book.volumeInfo?.authors?.join(", ") || "Unknown authors"}
 						</p>
-						<p>
-							<strong>Pages:</strong>{" "}
-							{book.volumeInfo?.pageCount || "Unknown page count"}
-						</p>
 					</div>
 				))}
 			</div>

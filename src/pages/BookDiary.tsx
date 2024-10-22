@@ -1,16 +1,11 @@
 import { useState, useEffect } from "react";
 import "./css/BookDiary.css";
 import IBook from "../interfaces/IBook";
+import IReview from "../interfaces/IReview";
 
-interface Review {
-	bookId: string;
-	note: string;
-	rating: number;
-	thumbnail: string;
-}
 
 function BookDiary() {
-	const [bookReviews, setBookReviews] = useState<Review[]>([]);
+	const [bookReviews, setBookReviews] = useState<IReview[]>([]);
 	const [newNote, setNewNote] = useState("");
 	const [newRating, setNewRating] = useState(0);
 	const [selectedBook, setSelectedBook] = useState<IBook | null>(null);

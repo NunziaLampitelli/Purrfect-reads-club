@@ -1,0 +1,6 @@
+.cat-profile-pic {
+  max-width: 20%;
+  max-height: auto;
+  border-radius: 50%;
+  border: 2px black solid;
+}

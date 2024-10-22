@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import IBook from "../interfaces/IBook";
 import "./css/BookInfoPage.css";
 
 function BookInfoPage() {
-	const { id } = useParams<{ id: string }>(); 
+	const { id } = useParams<{ id: string }>();
 	const [book, setBook] = useState<IBook | null>(null);
 	const [isFavorite, setIsFavorite] = useState(false);
+	const [shareButtonText, setShareButtonText] = useState("Share this Book");
+	const navigate = useNavigate();
+	const currentUser = localStorage.getItem("currentUser");
 
 	useEffect(() => {
 		const fetchBookDetails = async () => {
@@ -41,7 +44,13 @@ function BookInfoPage() {
 	};
 
 	const toggleFavorite = () => {
-		if (!book) return; // this is to check that the book isn't null
+		if (!currentUser) {
+			alert("Please log in to add books to favorites.");
+			navigate("/login");
+			return;
+		}
+
+		if (!book) return;
 
 		const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
 
@@ -58,8 +67,28 @@ function BookInfoPage() {
 		}
 	};
 
+const shareBook = () => {
+	if (book) {
+		const link = window.location.href; 
+
+		navigator.clipboard
+			.writeText(link) 
+			.then(() => {
+				setShareButtonText("Link Copied!");
+			})
+			.catch((error) => {
+				console.error("Could not copy text: ", error);
+			});
+
+		// to go back to the previous state after 2 seconds
+		setTimeout(() => {
+			setShareButtonText("Share this Book");
+		}, 2000);
+	}
+};
+
 	if (!book) {
-		return <p>Loading...</p>; // shows a message if book is null
+		return <p>Loading...</p>;
 	}
 
 	const { title, authors, description, pageCount, categories, imageLinks } =
@@ -90,6 +119,9 @@ function BookInfoPage() {
 				</p>
 				<button onClick={toggleFavorite}>
 					{isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+				</button>
+				<button onClick={shareBook}>
+					{shareButtonText} 
 				</button>
 			</div>
 		</div>

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import IUser from "../interfaces/IUser";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import "./css/RegisterPage.css"
+import loginIcon from "../assets/login-paw.png";
 
 function RegisterPage() {
   const [username, setUsername] = useState<string>('');
@@ -49,31 +51,49 @@ function RegisterPage() {
 
 		setTimeout(() => {
 			navigate("/login"); 
-		}, 5000);
+		}, 1000);
 	}
 
   return (
-    <div>
-      <h1> Register a new account here</h1>
-      <form onSubmit={HandleRegister}>
-        {errorMessage && <p>{errorMessage}</p>}
-        <div>
-        <label>Username:</label>
-        <input type="text" value={username} onChange={(event) => setUsername(event.target.value)}
-        required />
-    </div>
-    <div>
-      <label>Password:</label>
-      <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} required />
-    </div>
-    <div>
-      <label>Confirm Password:</label>
-      <input type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} required />
-    </div>
-      <button type="submit">Register</button>
-      </form>
-    </div>
-);
+		<div className="register-container">
+			<form className="register-form" onSubmit={HandleRegister}>
+				{errorMessage && <p>{errorMessage}</p>}
+				<div>
+					<label>Choose a meowsername</label>
+					<input
+						type="text"
+						value={username}
+						onChange={(event) => setUsername(event.target.value)}
+						required
+					/>
+				</div>
+				<div>
+					<label>Choose a pawssword</label>
+					<input
+						type="password"
+						value={password}
+						onChange={(event) => setPassword(event.target.value)}
+						required
+					/>
+				</div>
+				<div>
+					<label>Confirm the pawssword</label>
+					<input
+						type="password"
+						value={confirmPassword}
+						onChange={(event) => setConfirmPassword(event.target.value)}
+						required
+					/>
+				</div>
+				<button className="register-button" type="submit">
+					<img src={loginIcon} alt="Login Icon" className="icon" />
+				</button>
+			</form>
+			<p>
+				If you already have an account click <Link className="register-login-link" to="/login/">here</Link>
+			</p>
+		</div>
+	);
 }
 
 export default RegisterPage;

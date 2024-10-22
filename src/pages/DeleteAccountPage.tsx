@@ -15,9 +15,7 @@ function DeleteAccountPage() {
     }
 
     const updatedUsers = users.filter((user: any) => user.username !== currentUsername);
-
     localStorage.setItem('users', JSON.stringify(updatedUsers))
-
     localStorage.removeItem("currentUser");
 
     navigate('/login');
