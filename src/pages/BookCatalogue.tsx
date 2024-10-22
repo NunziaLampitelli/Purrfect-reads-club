@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import IBook from "../interfaces/IBook";
 import { useSearch } from "../searchContext";
 import "./css/BookCatalogue.css";
+import searchIcon from "../assets/login-paw.png"
+import leftArrow from "../assets/left-arrow.png";
+import rightArrow from "../assets/right-arrow.png";
 
 function BookCatalogue() {
 	const { searchItem, setSearchItem, currentPage, setCurrentPage } =
@@ -17,9 +20,11 @@ function BookCatalogue() {
 			if (searchItem) {
 				const apiKey = "AIzaSyBgXLpVU0ypFCl4qpu_bLMMeGXjBLLDiqc";
 				const startIndex = (currentPage - 1) * itemsPerPage;
-				const maxResults = 40; 
+				const maxResults = 40;
 
-const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(searchItem)}&key=${apiKey}&maxResults=${maxResults}&startIndex=${startIndex}`;
+				const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
+					searchItem
+				)}&key=${apiKey}&maxResults=${maxResults}&startIndex=${startIndex}`;
 				try {
 					const response = await fetch(url);
 					if (!response.ok) {
@@ -32,22 +37,22 @@ const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
 						console.error("No items found in the response");
 					}
 
-					console.log("Fetched books:", data.items); //to debug if the function gets the data 
+					console.log("Fetched books:", data.items); //to debug if the function gets the data
 					setBooks(data.items || []);
-					setTotalItems(data.totalItems > 40 ? 40 : data.totalItems); 
+					setTotalItems(data.totalItems > 40 ? 40 : data.totalItems);
 				} catch (error) {
 					console.error(`There was an error in the search:`, error);
 				}
 			}
 		};
 
-		fetchBooks(); 
+		fetchBooks();
 	}, [searchItem, currentPage]); // new fetch when searchitem or current page changes
 
 	const handleSearch = async (event: FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		if (searchItem.trim() !== "") {
-			setCurrentPage(1); // with the new search it redirects to page n.1 
+			setCurrentPage(1); // with the new search it redirects to page n.1
 		}
 	};
 
@@ -65,19 +70,25 @@ const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
 
 	return (
 		<div className="book-search">
-			<p>Pawfect book hunt</p>
-			<form className="search-field" onSubmit={handleSearch}>
-				<input
-					type="text"
-					placeholder="Write book info here"
-					value={searchItem}
-					onChange={(event) => setSearchItem(event.target.value)} // uppdates the value of searchitem
-				/>
-				<button type="submit">Search</button>
-			</form>
-			{totalItems > 0 && (
-				<p>{`Found ${totalItems} books. Page ${currentPage} of ${totalPages}`}</p>
-			)}
+			<div className="search-container">
+				<div className="search-info">
+					<p>Pawfect book hunt</p>
+					<form className="search-field" onSubmit={handleSearch}>
+						<input
+							type="text"
+							placeholder="Write book info here"
+							value={searchItem}
+							onChange={(event) => setSearchItem(event.target.value)} // Updates the value of searchItem
+						/>
+						{totalItems > 0 && (
+							<p>{`Found ${totalItems} books. Page ${currentPage} of ${totalPages}`}</p>
+						)}
+					</form>
+				</div>
+				<button className="search-button" type="submit">
+					<img src={searchIcon} alt="search-icon" />
+				</button>
+			</div>
 			<div className="book-list">
 				{books.length > 0 ? (
 					<>
@@ -101,14 +112,14 @@ const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(
 						</ul>
 						<div className="pagination">
 							<button onClick={handlePreviousPage} disabled={currentPage === 1}>
-								Previous
+								<img src={leftArrow} alt="left-arrow" />
 							</button>
 							<span>{`Page ${currentPage} of ${totalPages}`}</span>
 							<button
 								onClick={handleNextPage}
 								disabled={currentPage === totalPages}
 							>
-								Next
+								<img src={rightArrow} alt="right-arrow" />
 							</button>
 						</div>
 					</>
