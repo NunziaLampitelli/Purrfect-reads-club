@@ -72,7 +72,7 @@ function BookCatalogue() {
 		<div className="book-search">
 			<div className="search-container">
 				<div className="search-info">
-					<p>Pawfect book hunt</p>
+					<p className="catalogue-title">Pawfect Book Hunt</p>
 					<form className="search-field" onSubmit={handleSearch}>
 						<input
 							type="text"
@@ -81,7 +81,7 @@ function BookCatalogue() {
 							onChange={(event) => setSearchItem(event.target.value)} // Updates the value of searchItem
 						/>
 						{totalItems > 0 && (
-							<p>{`Found ${totalItems} books. Page ${currentPage} of ${totalPages}`}</p>
+							<p className="found-books">{`Found ${totalItems} books. Page ${currentPage} of ${totalPages}`}</p>
 						)}
 					</form>
 				</div>
@@ -124,7 +124,7 @@ function BookCatalogue() {
 						</div>
 					</>
 				) : (
-					<p>No books found</p>
+					<p className="no-found-book">No books found</p>
 				)}
 			</div>
 		</div>

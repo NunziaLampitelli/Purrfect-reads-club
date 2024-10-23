@@ -1,0 +1,72 @@
+/* Contenitore principale per centrare gli elementi */
+.delete-account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra gli elementi orizzontalmente */
+  margin: 2rem auto;
+  max-width: 80vw;
+  padding: 1rem; /* Padding per il contenitore principale */
+  font-family: "Baloo 2", sans-serif; /* Font di default per il testo */
+}
+
+/* Titolo della pagina */
+.delete-title {
+  font-family: "Marianne", sans-serif; /* Font per il titolo */
+  font-size: 3.5rem; /* Dimensione del font per il titolo */
+  text-shadow: 0 4px 4px rgba(242, 139, 130, 1);
+}
+
+/* Messaggio di errore */
+.error-message {
+  color: red; /* Colore per i messaggi di errore */
+  margin: 1rem 0; /* Margine sopra e sotto il messaggio di errore */
+}
+
+/* Messaggio di avviso */
+.delete-warning {
+  text-align: center; /* Centra il testo */
+  margin: 1rem 0; /* Margine sopra e sotto il messaggio di avviso */
+  font-size: 1.5rem;
+}
+
+/* Pulsante di tornare indietro */
+.back-link {
+  background-color: #A8E6CF; /* Colore di sfondo verde pastello */
+  color: black; /* Colore del testo */
+  border: solid 2px transparent; /* Bordo trasparente */
+  border-radius: 5px; /* Bordo arrotondato */
+  cursor: pointer; /* Mostra il cursore a forma di mano */
+  font-family: "Baloo 2"; /* Font per il pulsante */
+  font-size: large; /* Dimensione del font per il pulsante */
+  width: 100%; /* Larghezza totale */
+  min-width: 15rem; /* Larghezza minima per garantire uniformità */
+  text-align: center; /* Centra il testo */
+  text-decoration: none; /* Rimuove la sottolineatura dal link */
+  margin-block: 2rem;
+}
+
+/* Mantiene lo stesso colore al passaggio del mouse per il link */
+.back-link:hover {
+  background-color: #A8E6CF; /* Colore di sfondo verde pastello */
+}
+
+/* Pulsante di eliminazione account */
+.logout-button {
+  background-color: #ff4d4d94; /* Colore di sfondo per il pulsante di eliminazione */
+  color: black; /* Colore del testo */
+  border: solid 2px transparent; /* Bordo trasparente */
+  border-radius: 5px; /* Bordo arrotondato */
+  cursor: pointer; /* Mostra il cursore a forma di mano */
+  font-family: "Baloo 2"; /* Font per il pulsante */
+  font-size: large; /* Dimensione del font per il pulsante */
+  width: 100%; /* Larghezza totale */
+  min-width: 15rem; /* Larghezza minima per garantire uniformità */
+  text-align: center; /* Centra il testo */
+  text-decoration: none; /* Rimuove la sottolineatura dal link */
+  margin-block: 2rem;
+}
+
+/* Pulsante di logout hover */
+.logout-button:hover {
+  background-color: #F28B82; /* Colore più scuro al passaggio del mouse */
+}

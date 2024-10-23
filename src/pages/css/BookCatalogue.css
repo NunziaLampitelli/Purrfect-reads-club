@@ -9,127 +9,43 @@
   display: flex;
 }
 
-.search-container {
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem; /* Spazio tra il contenuto di ricerca e il pulsante */
+.catalogue-title {
+  margin-left: 6rem;
+  text-shadow: 0px 4px 4px rgba(242, 139, 130, 1);
 }
 
-.search-info {
-  flex-direction: column;
-  align-items: flex-start;
+.search-container {
+  max-width: 50vw;
+  padding-top: 2rem;
+  flex-direction: row;
+  align-items: center;
+  font-family: "Marianne";
+  font-size: 4rem;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .search-field {
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
 }
 
-.pagination {
-  justify-content: center; /* Allinea i pulsanti al centro orizzontalmente */
-  align-items: center;
-  gap: 0.25rem; /* Riduci ulteriormente il gap tra i pulsanti e il testo centrale */
-  margin-top: 2rem;
+.search-field > input {
+  width: 20rem;
+  height: 2rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border: solid 2px black;
+  margin-left: 3rem;
 }
 
-.pagination button {
-  background-color: transparent; /* Sfondo trasparente per il pulsante */
-  border: solid 2px rgba(0, 0, 0, 0); /* Bordi trasparenti */
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-inline: 1.5rem;
-  transition: background-color 0.3s, border-color 0.3s; 
-}
-
-.pagination button:hover {
-  background-color: #E3F2FD; 
-  border: solid 2px black; 
-}
-
-.pagination button:focus {
-  outline: none; 
-}
-
-.pagination button > img {
-  max-width: 2rem;
-  max-height: 2rem;
-  filter: brightness(0.5) opacity(0.8); 
-  transition: filter 0.3s; 
-}
-
-.pagination button:hover > img {
-  filter: brightness(1) opacity(1); 
-}
-
-.pagination span {
-  font-family: 'Marianne', sans-serif;
-  font-size: 2.5rem;
-  color: black;
-  margin: 0 0.5rem; 
-}
-
-
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); 
-  grid-template-rows: auto; 
-  gap: 2rem 4rem; 
-  list-style-type: none;
-  margin: 1rem auto; 
-  padding: 0 1rem; 
-  max-width: 80vw; 
-  box-sizing: border-box;
-}
-
-.grid-item {
-  background-color: #E3F2FD; 
-  width: 180px; 
-  height: 300px; 
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+.search-field > input::placeholder {
   text-align: center;
-  border: 2px solid rgba(0, 0, 0, 0.393);
-  transition: transform 0.2s;
-  display: flex;
-  flex-direction: column; 
-  justify-content: space-between; 
-}
-
-.grid-item:hover {
-  transform: scale(1.05); 
-  cursor: pointer; 
-}
-
-.grid-item img {
-  width: 150px; 
-  height: 210px; 
-  border-radius: 4px;
-  border: 2px solid #666;
-  object-fit: cover; 
-}
-
-.grid-item h5,
-.grid-item p {
-  font-size: 1rem;
-  margin: 10px 0;
-  font-family: "Baloo 2";
-  max-width: 100%;
-  white-space: nowrap; 
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-}
-
-.grid-item p {
   color: #666;
 }
 
 .search-button {
-  margin-block: 2rem;
-  background-color: white; 
+  background-color: white;
   border: solid 2px black;
   padding: 15px;
   cursor: pointer;
@@ -137,7 +53,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  margin-left: 1rem;
 }
 
 .search-button:hover {
@@ -145,6 +62,165 @@
 }
 
 .search-button img {
-  width: 30px;  
-  height: 30px; 
+  width: 30px;
+  height: 30px;
+}
+
+.search-info {
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-found-book, .found-books {
+  font-family: "Marianne";
+  font-size: 2.5rem;
+  margin-top: 1rem;
+}
+
+.no-found-book {
+  padding-top: 1rem;
+}
+
+.found-books {
+  margin-left: 4rem;
+}
+
+.pagination {
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  background-color: transparent;
+  border: solid 2px rgba(0, 0, 0, 0);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: 1.5rem;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.pagination button:hover {
+  background-color: #E3F2FD;
+  border: solid 2px black;
+}
+
+.pagination button:focus {
+  outline: none;
+}
+
+.pagination button img {
+  max-width: 2rem;
+  max-height: 2rem;
+  filter: brightness(0.5) opacity(0.8);
+  transition: filter 0.3s;
+}
+
+.pagination button:hover img {
+  filter: brightness(1) opacity(1);
+}
+
+.pagination span {
+  font-family: 'Marianne', sans-serif;
+  font-size: 2.5rem;
+  color: black;
+  margin: 0 0.5rem;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 2rem 4rem;
+  list-style-type: none;
+  margin: 1rem auto;
+  padding: 0 1rem;
+  max-width: 80vw;
+  box-sizing: border-box;
+}
+
+.grid-item {
+  background-color: #E3F2FD;
+  width: 180px;
+  height: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border: 2px solid rgba(0, 0, 0, 0.393);
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.grid-item img {
+  width: 150px;
+  height: 210px;
+  border-radius: 4px;
+  border: 2px solid #666;
+  object-fit: cover;
+}
+
+.grid-item h5, .grid-item p {
+  font-size: 1rem;
+  margin: 10px 0;
+  font-family: "Baloo 2";
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.grid-item p {
+  color: #666;
+}
+
+/* Stile per schermi più piccoli */
+@media (max-width: 768px) {
+  .catalogue-title {
+    font-size: 2rem;
+    margin-left: 0;
+  }
+
+  .search-container {
+    flex-direction: column;
+    font-size: 2rem;
+    max-width: 90vw;
+    padding-top: 1rem;
+  }
+
+  .search-field > input {
+    width: 90%;
+    margin-left: 0;
+  }
+
+  .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* Riduci il numero di colonne su schermi piccoli */
+    max-width: 90vw;
+  }
+
+  .grid-item {
+    width: 140px;
+    height: 250px;
+  }
+
+    .search-button {
+    width: 50px;  /* Imposta una larghezza minore per schermi piccoli */
+    height: 50px; /* Mantieni la proporzione circolare */
+  }
+
+  .search-button img {
+    width: 25px;
+    height: 25px;
+  }
+
 }

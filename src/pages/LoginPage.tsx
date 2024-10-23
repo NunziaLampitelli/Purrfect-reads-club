@@ -38,7 +38,7 @@ function handleLogin(event: React.FormEvent) {
 		<div className="login-container">
 			{errorMessage && <p>{errorMessage}</p>}
 
-			{loggedInUsername ? ( // This is to show the message when the account is already logged in instead of the form
+			{loggedInUsername ? (
 				<div>
 					<h2>You are already logged in {loggedInUsername}! Meow!</h2>
 				</div>
@@ -72,7 +72,10 @@ function handleLogin(event: React.FormEvent) {
 				</form>
 			)}
 
-			{!loggedInUsername && ( <p>If you don't have one, you can register a new account <Link to="/register" className="login-register-link">
+			{!loggedInUsername && (
+				<p>
+					If you don't have one, you can register a new account{" "}
+					<Link to="/register" className="login-register-link">
 						here
 					</Link>
 				</p>

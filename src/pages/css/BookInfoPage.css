@@ -2,52 +2,84 @@
 
 .book-info-page-container {
   display: flex;
-  max-width: 75vw;
-  min-width: 75vw;
-  justify-content: center;
+  flex-direction: column; /* Per il layout iniziale verticale */
+  align-items: center;
   font-family: "Baloo 2", "Arial Rounded MT", Arial;
   text-align: justify;
-  margin: 2rem;
+  margin: 2rem auto; /* Centro la pagina */
+  max-width: 75vw;
+  min-width: 75vw;
 }
 
 .book-info-content {
   display: flex;
   flex-direction: column;
-  margin: auto;
+  align-items: flex-start; /* Allineo i contenuti sulla sinistra */
+  margin: 1rem auto;
+  max-width: 60%;
+  text-align: justify;
 }
 
 .book-info-img {
-  margin: auto;
-  width: 20%; 
-  height: auto; 
-  align-self: center;
-  border: solid 2px rgba(128, 128, 128, 0.475);
+  margin: 1rem auto;
+  max-width: 300px; /* Limito la larghezza massima dell'immagine */
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Mantengo il rapporto di aspetto corretto */
+  border: solid 2px rgb(0, 0, 0);
+  align-self: center; /* Allineo l'immagine al centro */
 }
 
-
 h1 {
-  justify-items: center;
-  margin: auto;
   font-family: "Baloo 2", "Arial Rounded MT", Arial;
   font-size: 2rem;
-  margin-bottom: 1rem; 
+  margin: 1rem auto;
+  text-align: center;
 }
 
 p {
-  margin: 0.5rem 0; 
+  margin: 0.5rem 0;
+  text-align: justify; /* Giustifico il testo per un aspetto ordinato */
+}
+
+.button-container {
+  display: flex; /* Usa flexbox per allineare i pulsanti orizzontalmente */
+  justify-content: space-around; /* Spazio uguale tra i pulsanti */
+  width: 100%; /* Utilizza tutta la larghezza disponibile */
+  margin-top: 1rem;
 }
 
 button {
-  margin: auto;
-  background-color: #ff6b6b; 
-  color: white; 
-  padding: 10px 20px; 
-  border: none; 
-  border-radius: 5px; 
-  cursor: pointer; 
-  transition: background-color 0.3s; 
+  background-color: #ff6b6b;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 45%; /* Lascio un po' di spazio tra i pulsanti */
+  max-width: 150px; /* Larghezza massima per i pulsanti */
+  text-align: center; /* Allinea il testo al centro */
+  border: solid 2px transparent;
+  font-family: "Baloo 2";
+  font-size: large;
+  color: rgba(0, 0, 0, 0.736);
 }
 
 button:hover {
-  background-color: #ff4d4d; 
+  border: solid 2px black;
+  color: black;
+}
+@media (min-width: 768px) {
+  .book-info-page-container {
+    flex-direction: row; /* Layout orizzontale per schermi più grandi */
+  }
+
+  .book-info-content {
+    margin-left: 2rem;
+    max-width: 60%;
+  }
+
+  .book-info-img {
+    max-width: 250px; /* Limito l'immagine a una dimensione ragionevole */
+  }
 }

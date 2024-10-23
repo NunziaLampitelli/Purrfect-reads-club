@@ -32,25 +32,28 @@ function PersonalPage() {
 		navigate("/login"); 
 	};
 
-	return (
-		<div>
-			<img className="cat-profile-pic" src={CatIconProfile} alt="Your Image" />
-			<h1>Hey {username}, what would you like to do meow?</h1>
-			<nav>
-				<ul>
-					<li>
-						<Link to="/book-diary">Read books diary</Link>
-					</li>
-					<li>
-						<Link to="/delete-account">
-							Do you want to delete your account?
-						</Link>
-					</li>
-				</ul>
-			</nav>
-			<button onClick={handleLogout}>Logout</button>
-		</div>
-	);
+return (
+  <div className="personal-page-container">
+    <div className="profile-info">
+      <img className="cat-profile-pic" src={CatIconProfile} alt="Your Image" />
+      <h1>Hey {username}, what would you like to do meow?</h1>
+    </div>
+    <nav>
+      <ul className="button-list">
+        <li>
+          <Link to="/book-diary">
+            <button className="read-books-button">Read books diary</button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/delete-account">
+            <button className="delete-button">Do you want to delete your account?</button>
+          </Link>
+        </li>
+      </ul>
+    </nav>
+    <button className="logout-button" onClick={handleLogout}>Logout</button>
+  </div>
+);
 }
-
 export default PersonalPage;

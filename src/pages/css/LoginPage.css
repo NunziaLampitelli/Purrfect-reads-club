@@ -1,43 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
 
+/* Stile generale */
 .login-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Baloo 2", "Arial Rounded MT", Arial;
   margin: auto;
+  padding: 1rem;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra gli elementi orizzontalmente */
 }
 
 .login-form div {
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center; /* Centrare gli elementi */
 }
 
+/* Centrare le label */
 .login-form label {
   margin-bottom: 5px; 
   font-family: "Marianne";
   font-size: 3rem;
-  align-self: center;
-  text-shadow: 0px 0px 4px white;
-  margin: auto;
+  text-align: center; /* Testo centrato */
+  text-shadow: 0 4px 4px rgba(242, 139, 130, 1);
 }
 
+/* Input field styling */
 .login-form input {
   padding: 8px;
-  min-width: 20rem;
+  width: 100%; /* Adatta alla larghezza del contenitore */
+  max-width: 20rem; /* Limita la larghezza massima */
   font-size: 16px;
   border: solid black 2px;
-  display: flex;
   text-align: center;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
 }
+
 input::placeholder {
   color: #999;
   font-family: "Baloo 2", "Arial Rounded MT", Arial; 
   font-size: 16px; 
 }
 
+/* Pulsante di login */
 .login-button {
   margin-block: 2rem;
   background-color: white; 
@@ -47,14 +60,18 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
+  border-radius: 50%; /* Trasforma in cerchio */
+  width:  60px;  /* Imposta larghezza e altezza uguali per il cerchio */
+  height:  60px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
 }
 
-.login-button:hover{
+/* Hover effect per il pulsante */
+.login-button:hover {
   background-color: #9AD98B;
 }
 
+/* Dimensione dell'immagine nel pulsante */
 .login-button img {
   width: 30px;  
   height: 30px; 
@@ -66,6 +83,35 @@ input::placeholder {
   font-weight: bold;
 }
 
+/* Nuovo stile per il contenitore dei pulsanti */
+.login-button-container {
+  display: flex; /* Imposta il contenitore come flex */
+  align-items: center; /* Centra verticalmente gli elementi */
+  gap: 1rem; /* Spazio tra i pulsanti */
+}
+
 .login-register-link:hover {
   text-decoration: underline #F28B82;
+}
+
+/* Media query per schermi piccoli */
+@media (max-width: 768px) {
+  .login-form label {
+    font-size: 2rem;
   }
+
+  .login-form input {
+    max-width: 100%; /* Si adatta allo schermo */
+    width: 100%;
+  }
+
+  .login-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .login-button img {
+    width: 25px;
+    height: 25px;
+  }
+}

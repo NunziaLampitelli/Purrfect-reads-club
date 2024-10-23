@@ -94,38 +94,40 @@ const shareBook = () => {
 	const { title, authors, description, pageCount, categories, imageLinks } =
 		book.volumeInfo;
 
-	return (
-		<div className="book-info-page-container">
-			<img
-				className="book-info-img"
-				src={imageLinks?.thumbnail}
-				alt={`${title} thumbnail`}
-			/>
-			<div className="book-info-content">
-				<h1>{title}</h1>
-				<p>
-					<strong>Authors:</strong> {authors?.join(", ") || "Unknown"}
-				</p>
-				<p>
-					<strong>Description:</strong>{" "}
-					{description || "No description available"}
-				</p>
-				<p>
-					<strong>Pages:</strong> {pageCount || "Not specified"}
-				</p>
-				<p>
-					<strong>Genre:</strong>{" "}
-					{categories?.join(", ") || "No genre available"}
-				</p>
-				<button onClick={toggleFavorite}>
-					{isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-				</button>
-				<button onClick={shareBook}>
-					{shareButtonText} 
-				</button>
-			</div>
-		</div>
-	);
+return (
+  <div className="book-info-page-container">
+    <img
+      className="book-info-img"
+      src={imageLinks?.thumbnail}
+      alt={`${title} thumbnail`}
+    />
+    <div className="book-info-content">
+      <h1>{title}</h1>
+      <p>
+        <strong>Authors:</strong> {authors?.join(", ") || "Unknown"}
+      </p>
+      <p>
+        <strong>Description:</strong> {description || "No description available"}
+      </p>
+      <p>
+        <strong>Pages:</strong> {pageCount || "Not specified"}
+      </p>
+      <p>
+        <strong>Genre:</strong> {categories?.join(", ") || "No genre available"}
+      </p>
+      
+      {/* Contenitore per i pulsanti */}
+      <div className="button-container">
+        <button onClick={toggleFavorite}>
+          {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+        </button>
+        <button onClick={shareBook}>
+          {shareButtonText}
+        </button>
+      </div>
+    </div>
+  </div>
+);
 }
 
 export default BookInfoPage;

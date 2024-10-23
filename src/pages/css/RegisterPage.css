@@ -1,69 +1,110 @@
+/* Stile generale */
 .register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: "Baloo 2", "Arial Rounded MT", Arial;
   margin: auto;
+  padding: 1rem;
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra gli elementi orizzontalmente */
 }
 
 .register-form div {
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
+  align-items: center; /* Centrare gli elementi */
 }
 
+/* Centrare le label */
 .register-form label {
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
   font-family: "Marianne";
   font-size: 3rem;
-  align-self: center;
-   text-shadow: 0px 0px 4px white;
-   margin: auto;
+  text-align: center; /* Testo centrato */
+  text-shadow: 0 4px 4px rgba(242, 139, 130, 1);
 }
 
+/* Input field styling */
 .register-form input {
   padding: 8px;
-  min-width: 20rem;
+  width: 100%; /* Adatta alla larghezza del contenitore */
+  max-width: 20rem;
+  min-width: 20rem; /* Limita la larghezza massima */
   font-size: 16px;
   border: solid black 2px;
-  display: flex;
   text-align: center;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
-}
-input::placeholder {
-  color: #999;
-  font-family: "Baloo 2", "Arial Rounded MT", Arial; 
-  font-size: 16px; 
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+input::placeholder {
+  color: #999;
+  font-family: "Baloo 2", "Arial Rounded MT", Arial;
+  font-size: 16px;
+}
+
+/* Pulsante di registrazione */
 .register-button {
-  margin-top: 2rem;
-  background-color: white; 
+  margin-block: 2rem;
+  background-color: white;
   border: solid 2px black;
   padding: 15px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25); 
+  border-radius: 50%; /* Trasforma in cerchio */
+  width: 60px; /* Imposta larghezza e altezza uguali per il cerchio */
+  height: 60px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.register-button:hover{
+/* Hover effect per il pulsante */
+.register-button:hover {
   background-color: #9AD98B;
 }
 
+/* Dimensione dell'immagine nel pulsante */
 .register-button img {
-  width: 30px;  
-  height: 30px; 
+  width: 30px;
+  height: 30px;
 }
 
 .register-login-link {
-  font-family: "Baloo 2", "Arial Rounded MT", Arial; 
+  font-family: "Baloo 2", "Arial Rounded MT", Arial;
   font-size: 1rem;
   font-weight: bold;
 }
 
 .register-login-link:hover {
   text-decoration: underline #F28B82;
+}
+
+/* Media query per schermi piccoli */
+@media (max-width: 768px) {
+  .register-form label {
+    font-size: 2rem;
   }
+
+  .register-form input {
+    max-width: 100%; /* Si adatta allo schermo */
+    width: 100%;
+  }
+
+  .register-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .register-button img {
+    width: 25px;
+    height: 25px;
+  }
+}
