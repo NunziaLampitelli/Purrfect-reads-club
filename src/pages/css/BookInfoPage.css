@@ -2,11 +2,11 @@
 
 .book-info-page-container {
   display: flex;
-  flex-direction: column; /* Per il layout iniziale verticale */
+  flex-direction: column; 
   align-items: center;
   font-family: "Baloo 2", "Arial Rounded MT", Arial;
   text-align: justify;
-  margin: 2rem auto; /* Centro la pagina */
+  margin: 2rem auto; 
   max-width: 75vw;
   min-width: 75vw;
 }
@@ -14,7 +14,7 @@
 .book-info-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* Allineo i contenuti sulla sinistra */
+  align-items: flex-start; 
   margin: 1rem auto;
   max-width: 60%;
   text-align: justify;
@@ -22,12 +22,12 @@
 
 .book-info-img {
   margin: 1rem auto;
-  max-width: 300px; /* Limito la larghezza massima dell'immagine */
+  max-width: 300px; 
   width: 100%;
   height: auto;
-  object-fit: contain; /* Mantengo il rapporto di aspetto corretto */
+  object-fit: contain;
   border: solid 2px rgb(0, 0, 0);
-  align-self: center; /* Allineo l'immagine al centro */
+  align-self: center; 
 }
 
 h1 {
@@ -39,13 +39,13 @@ h1 {
 
 p {
   margin: 0.5rem 0;
-  text-align: justify; /* Giustifico il testo per un aspetto ordinato */
+  text-align: justify; 
 }
 
 .button-container {
-  display: flex; /* Usa flexbox per allineare i pulsanti orizzontalmente */
-  justify-content: space-around; /* Spazio uguale tra i pulsanti */
-  width: 100%; /* Utilizza tutta la larghezza disponibile */
+  display: flex;
+  justify-content: space-around; 
+  width: 100%; 
   margin-top: 1rem;
 }
 
@@ -56,9 +56,9 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 45%; /* Lascio un po' di spazio tra i pulsanti */
-  max-width: 150px; /* Larghezza massima per i pulsanti */
-  text-align: center; /* Allinea il testo al centro */
+  width: 45%; 
+  max-width: 150px;
+  text-align: center; 
   border: solid 2px transparent;
   font-family: "Baloo 2";
   font-size: large;
@@ -71,7 +71,7 @@ button:hover {
 }
 @media (min-width: 768px) {
   .book-info-page-container {
-    flex-direction: row; /* Layout orizzontale per schermi più grandi */
+    flex-direction: row; 
   }
 
   .book-info-content {
@@ -80,6 +80,6 @@ button:hover {
   }
 
   .book-info-img {
-    max-width: 250px; /* Limito l'immagine a una dimensione ragionevole */
+    max-width: 250px; 
   }
 }

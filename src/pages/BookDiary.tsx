@@ -2,76 +2,23 @@ import { useState, useEffect } from "react";
 import "./css/BookDiary.css";
 import IBook from "../interfaces/IBook";
 import IReview from "../interfaces/IReview";
+import { Link } from "react-router-dom";
 
 function BookDiary() {
 	const [bookReviews, setBookReviews] = useState<IReview[]>([]);
-	const [newNote, setNewNote] = useState("");
-	const [newRating, setNewRating] = useState(0);
-	const [selectedBook, setSelectedBook] = useState<IBook | null>(null);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [searchResults, setSearchResults] = useState<IBook[]>([]);
+	const [selectedBook, setSelectedBook] = useState<IBook | null>(null);
+	const [note, setNote] = useState<string>("");
+	const [rating, setRating] = useState<number>(0);
 
-	// Retrieve saved reviews from localStorage
+//to retrevie from local storage
 	useEffect(() => {
 		const savedReviews = JSON.parse(
 			localStorage.getItem("book-reviews") || "[]"
 		);
 		setBookReviews(savedReviews);
 	}, []);
-
-	const saveReview = () => {
-		if (selectedBook) {
-			const updatedReviews = [
-				...bookReviews.filter((review) => review.bookId !== selectedBook.id),
-				{
-					bookId: selectedBook.id,
-					note: newNote,
-					rating: newRating,
-					thumbnail:
-						selectedBook.thumbnail ||
-						selectedBook.volumeInfo.imageLinks?.thumbnail ||
-						"",
-				},
-			];
-			setBookReviews(updatedReviews);
-			localStorage.setItem("book-reviews", JSON.stringify(updatedReviews));
-
-			if (newRating === 5) {
-				const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-				const isFavorite = favorites.some(
-					(favorite: IBook) => favorite.id === selectedBook.id
-				);
-
-				if (!isFavorite) {
-					favorites.push(selectedBook);
-					localStorage.setItem("favorites", JSON.stringify(favorites));
-				}
-			}
-
-			setNewNote("");
-			setNewRating(0);
-			setSelectedBook(null);
-		}
-	};
-
-	const deleteReview = (bookId: string) => {
-		const updatedReviews = bookReviews.filter(
-			(review) => review.bookId !== bookId
-		);
-		setBookReviews(updatedReviews);
-		localStorage.setItem("book-reviews", JSON.stringify(updatedReviews));
-
-		const deletedReview = bookReviews.find(
-			(review) => review.bookId === bookId
-		);
-		if (deletedReview && deletedReview.rating === 5) {
-			const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
-			const updatedFavorites = favorites.filter(
-				(favorite: IBook) => favorite.id !== bookId
-			);
-			localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-		}
-	};
 
 	const fetchBooks = async (query: string) => {
 		if (query.length > 2) {
@@ -95,7 +42,6 @@ function BookDiary() {
 		}
 	};
 
-	// Starts book search when searchTerm changes
 	useEffect(() => {
 		const timeoutId = setTimeout(() => {
 			fetchBooks(searchTerm);
@@ -103,128 +49,110 @@ function BookDiary() {
 		return () => clearTimeout(timeoutId);
 	}, [searchTerm]);
 
+	const handleSaveReview = () => {
+		if (selectedBook && note.trim()) {
+			const newReview: IReview = {
+				bookId: selectedBook.id,
+				note: note,
+				rating: rating,
+				thumbnail: selectedBook.volumeInfo.imageLinks?.thumbnail || "",
+			};
+
+			const updatedReviews = [...bookReviews, newReview];
+			setBookReviews(updatedReviews);
+			localStorage.setItem("book-reviews", JSON.stringify(updatedReviews));
+
+			if (rating === 5) {
+				const storedFavorites = JSON.parse(
+					localStorage.getItem("favorites") || "[]"
+				);
+				if (
+					!storedFavorites.some(
+						(favorite: IBook) => favorite.id === selectedBook.id
+					)
+				) {
+					storedFavorites.push(selectedBook); 
+					localStorage.setItem("favorites", JSON.stringify(storedFavorites));
+				}
+			}
+
+			setNote("");
+			setRating(0);
+			setSelectedBook(null);
+			setSearchResults([]);
+		}
+	};
+
 	return (
 		<div className="book-diary-container">
 			<h1 className="book-diary-title">Your Book Diary</h1>
 
-			<div className="book-diary-review-section">
-				<h3 className="book-diary-subtitle">Add or Edit a Review</h3>
-				<label className="book-diary-label">Select a book (ID or title):</label>
+			<label className="book-diary-label">Search for a book:</label>
+			<div className="dropdown-container">
 				<input
 					className="book-diary-input"
 					type="text"
 					value={searchTerm}
 					onChange={(event) => setSearchTerm(event.target.value)}
-					onKeyDown={(event) => {
-						if (event.key === "Enter") {
-							fetchBooks(searchTerm); // Start the search
-						}
-					}}
-					placeholder="Enter book ID or title"
-				/>
-				{searchResults.length > 0 &&
-					!selectedBook && ( // Show results only if no book is selected
-						<ul className="book-diary-search-results">
-							{searchResults.map((book) => (
-								<li
-									key={book.id}
-									className="book-diary-search-item"
-									onClick={() => {
-										setSelectedBook(book);
-										setSearchTerm(book.volumeInfo.title);
-										setSearchResults([]); // Clear search results
-									}}
-								>
-									<strong>{book.volumeInfo.title}</strong> -{" "}
-									{book.volumeInfo.authors?.join(", ") ?? "Unknown Author"}
-								</li>
-							))}
-						</ul>
-					)}
-
-				{selectedBook && (
-					<div className="book-diary-selected-book">
-						<h4 className="book-diary-selected-title">Selected Book</h4>
-						<p>
-							<strong>Title:</strong> {selectedBook.volumeInfo.title}
-						</p>
-						<img
-							src={
-								selectedBook.thumbnail ||
-								selectedBook.volumeInfo.imageLinks?.thumbnail
-							}
-							alt={selectedBook.volumeInfo.title}
-							className="book-diary-thumbnail"
-						/>
-					</div>
-				)}
-
-				<label className="book-diary-label">Personal Notes:</label>
-				<textarea
-					className="book-diary-textarea"
-					value={newNote}
-					onChange={(event) => setNewNote(event.target.value)}
-					placeholder="Write your thoughts on the book"
+					placeholder="Enter book title or author"
 				/>
 
-				<label className="book-diary-label">Rating:</label>
-				<div className="book-diary-rating">
-					{[1, 2, 3, 4, 5].map((star) => (
-						<button
-							key={star}
-							onClick={() => setNewRating(star)}
-							className={newRating >= star ? "star-gold" : "star-gray"}
-						>
-							★
-						</button>
-					))}
-				</div>
-
-				<button
-					className="book-diary-save-button"
-					onClick={saveReview}
-					disabled={!selectedBook}
-				>
-					Save Review
-				</button>
-			</div>
-
-			<div className="book-diary-reviews-section">
-				<h3 className="book-diary-subtitle">Your Saved Reviews</h3>
-				<ul className="book-diary-reviews-list">
-					{bookReviews.length > 0 ? (
-						bookReviews.map((review) => (
-							<li key={review.bookId} className="book-diary-review-item">
-								<p>
-									<strong>Book ID:</strong> {review.bookId}
-								</p>
-								<img
-									src={review.thumbnail}
-									alt="Book cover"
-									className="book-diary-thumbnail"
-								/>
-								<p>
-									<strong>Notes:</strong> {review.note}
-								</p>
-								<p>
-									<strong>Rating:</strong>{" "}
-									{Array.from({ length: review.rating })
-										.map(() => "★")
-										.join("")}
-								</p>
-								<button
-									className="book-diary-delete-button"
-									onClick={() => deleteReview(review.bookId)}
-								>
-									Delete Review
-								</button>
+				{searchResults.length > 0 && !selectedBook && (
+					<ul className="book-diary-search-results">
+						{searchResults.map((book) => (
+							<li
+								key={book.id}
+								className="book-diary-search-item"
+								onClick={() => {
+									setSelectedBook(book);
+									setSearchTerm(book.volumeInfo.title);
+									setSearchResults([]);
+								}}
+							>
+								<strong>{book.volumeInfo.title}</strong> -{" "}
+								{book.volumeInfo.authors?.join(", ") ?? "Unknown Author"}
 							</li>
-						))
-					) : (
-						<p>No reviews saved yet.</p>
-					)}
-				</ul>
+						))}
+					</ul>
+				)}
 			</div>
+
+			{selectedBook && (
+				<div className="book-diary-selected-book">
+					<h4 className="book-diary-selected-title">Selected Book</h4>
+					<p>
+						<strong>Title:</strong> {selectedBook.volumeInfo.title}
+					</p>
+					<img
+						src={selectedBook.volumeInfo.imageLinks?.thumbnail || ""}
+						alt={selectedBook.volumeInfo.title}
+						className="book-diary-thumbnail"
+					/>
+
+					<textarea
+						value={note}
+						onChange={(e) => setNote(e.target.value)}
+						placeholder="Write your note here..."
+						className="book-diary-note"
+					/>
+					<div className="rating-container">
+						{[1, 2, 3, 4, 5].map((star) => (
+							<span
+								key={star}
+								className={`star ${rating >= star ? "filled" : ""}`}
+								onClick={() => setRating(star)}
+							>
+								★
+							</span>
+						))}
+					</div>
+					<button onClick={handleSaveReview}>Save Review</button>
+				</div>
+			)}
+
+			<Link to="/personal-notes" className="personal-notes-link">
+				Personal Notes
+			</Link>
 		</div>
 	);
 }

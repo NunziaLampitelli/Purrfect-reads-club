@@ -151,14 +151,15 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   border: 2px solid rgba(0, 0, 0, 0.393);
-  transition: transform 0.2s;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease; 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .grid-item:hover {
-  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+  transform: translateY(-5px);
   cursor: pointer;
 }
 
@@ -183,8 +184,6 @@
 .grid-item p {
   color: #666;
 }
-
-/* Stile per schermi più piccoli */
 @media (max-width: 768px) {
   .catalogue-title {
     font-size: 2rem;
@@ -204,7 +203,7 @@
   }
 
   .grid-container {
-    grid-template-columns: repeat(2, 1fr); /* Riduci il numero di colonne su schermi piccoli */
+    grid-template-columns: repeat(2, 1fr); 
     max-width: 90vw;
   }
 
@@ -214,8 +213,8 @@
   }
 
     .search-button {
-    width: 50px;  /* Imposta una larghezza minore per schermi piccoli */
-    height: 50px; /* Mantieni la proporzione circolare */
+    width: 50px;  
+    height: 50px; 
   }
 
   .search-button img {
@@ -223,4 +222,16 @@
     height: 25px;
   }
 
+}
+
+.book-author {
+    font-size: 1rem;
+  color: #666;
+  text-align: center; 
+  margin: 0.5rem 0;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "Baloo 2";
 }

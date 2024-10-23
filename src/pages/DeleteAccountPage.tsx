@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom"; // Importa Link qui
+import { useNavigate, Link } from "react-router-dom"; 
 import "./css/DeleteAccountpage.css";
 
 function DeleteAccountPage() {

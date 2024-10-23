@@ -15,6 +15,7 @@ import BookInfoPage from "./pages/BookInfoPage";
 import BookDiary from "./pages/BookDiary";
 import PrivateRoute from "./components/PrivateRoute";
 import NotFoundPage from "./pages/NotFoundPage";
+import PersonalNotesPage from "./pages/PersonalNotesPage";
 
 function AppRouter() {
 	return (
@@ -52,6 +53,14 @@ function AppRouter() {
 								element={
 									<PrivateRoute>
 										<BookDiary />
+									</PrivateRoute>
+								}
+							/>
+							<Route
+								path="personal-notes"
+								element={
+									<PrivateRoute>
+										<PersonalNotesPage />
 									</PrivateRoute>
 								}
 							/>

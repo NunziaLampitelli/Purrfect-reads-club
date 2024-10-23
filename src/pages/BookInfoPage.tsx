@@ -115,9 +115,7 @@ return (
       <p>
         <strong>Genre:</strong> {categories?.join(", ") || "No genre available"}
       </p>
-      
-      {/* Contenitore per i pulsanti */}
-      <div className="button-container">
+            <div className="button-container">
         <button onClick={toggleFavorite}>
           {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
         </button>

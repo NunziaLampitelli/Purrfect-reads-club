@@ -105,7 +105,7 @@ function BookCatalogue() {
 											<p>No image available</p>
 										)}
 										<h5>{book.volumeInfo.title}</h5>
-										<p>{book.volumeInfo.authors?.join(", ")}</p>
+										<p className="book-author">{book.volumeInfo.authors?.join(", ")}</p>
 									</Link>
 								</li>
 							))}

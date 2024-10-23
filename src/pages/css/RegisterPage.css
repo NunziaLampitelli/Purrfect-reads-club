@@ -1,4 +1,3 @@
-/* Stile generale */
 .register-container {
   display: flex;
   flex-direction: column;
@@ -13,31 +12,29 @@
 .register-form {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra gli elementi orizzontalmente */
+  align-items: center; 
 }
 
 .register-form div {
   padding-top: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrare gli elementi */
+  align-items: center; 
 }
 
-/* Centrare le label */
 .register-form label {
   margin-bottom: 5px;
   font-family: "Marianne";
   font-size: 3rem;
-  text-align: center; /* Testo centrato */
+  text-align: center;
   text-shadow: 0 4px 4px rgba(242, 139, 130, 1);
 }
 
-/* Input field styling */
 .register-form input {
   padding: 8px;
-  width: 100%; /* Adatta alla larghezza del contenitore */
+  width: 100%; 
   max-width: 20rem;
-  min-width: 20rem; /* Limita la larghezza massima */
+  min-width: 20rem; 
   font-size: 16px;
   border: solid black 2px;
   text-align: center;
@@ -50,7 +47,6 @@ input::placeholder {
   font-size: 16px;
 }
 
-/* Pulsante di registrazione */
 .register-button {
   margin-block: 2rem;
   background-color: white;
@@ -60,18 +56,16 @@ input::placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%; /* Trasforma in cerchio */
-  width: 60px; /* Imposta larghezza e altezza uguali per il cerchio */
+  border-radius: 50%; 
+  width: 60px; 
   height: 60px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-/* Hover effect per il pulsante */
 .register-button:hover {
   background-color: #9AD98B;
 }
 
-/* Dimensione dell'immagine nel pulsante */
 .register-button img {
   width: 30px;
   height: 30px;
@@ -87,14 +81,13 @@ input::placeholder {
   text-decoration: underline #F28B82;
 }
 
-/* Media query per schermi piccoli */
 @media (max-width: 768px) {
   .register-form label {
     font-size: 2rem;
   }
 
   .register-form input {
-    max-width: 100%; /* Si adatta allo schermo */
+    max-width: 100%; 
     width: 100%;
   }
 

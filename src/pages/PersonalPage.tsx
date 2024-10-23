@@ -42,8 +42,12 @@ return (
       <ul className="button-list">
         <li>
           <Link to="/book-diary">
-            <button className="read-books-button">Read books diary</button>
+            <button className="read-books-button">Write a personal review</button>
           </Link>
+        </li>
+        <li>
+          <Link to="/personal-notes">
+          <button className="personal-notes-button">Reviews Diary</button></Link>
         </li>
         <li>
           <Link to="/delete-account">

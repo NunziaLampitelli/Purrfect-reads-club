@@ -1,14 +1,20 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import {
+	createContext,
+	useContext,
+	useState,
+	ReactNode,
+	useEffect,
+} from "react";
 
 interface UserContextType {
 	username: string | null;
 	setUsername: (username: string | null) => void;
+	personalNotes: Record<string, string>; // this is needed to memorize personal notes for everybook
+	setPersonalNotes: (notes: Record<string, string>) => void; // to updated thenotes
 }
 
-// create a new usercontext starting with undefined
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-// This is to create the hook needed
 export const useUser = () => {
 	const context = useContext(UserContext);
 	if (!context) {
@@ -17,12 +23,28 @@ export const useUser = () => {
 	return context;
 };
 
-// provider with the content that needs to be inside
 export function UserProvider({ children }: { children: ReactNode }) {
 	const [username, setUsername] = useState<string | null>(null);
+	const [personalNotes, setPersonalNotes] = useState<Record<string, string>>(
+		{}
+	);
+
+	useEffect(() => {
+		const storedNotes = localStorage.getItem("personalNotes");
+		if (storedNotes) {
+			setPersonalNotes(JSON.parse(storedNotes));
+		}
+	}, []);
+
+	// updates local storage when notes change
+	useEffect(() => {
+		localStorage.setItem("personalNotes", JSON.stringify(personalNotes));
+	}, [personalNotes]);
 
 	return (
-		<UserContext.Provider value={{ username, setUsername }}>
+		<UserContext.Provider
+			value={{ username, setUsername, personalNotes, setPersonalNotes }}
+		>
 			{children}
 		</UserContext.Provider>
 	);

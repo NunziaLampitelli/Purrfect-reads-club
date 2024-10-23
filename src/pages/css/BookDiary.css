@@ -1,88 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
+
 .book-diary-container {
-  font-family: 'Baloo 2', sans-serif;
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background-color: #f9f9f9; /* Sfondo chiaro per contrastare il testo */
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: "Baloo 2";
 }
 
 .book-diary-title {
-  text-align: center;
-  color: #f28b82; /* Colore rosso corallo pastello chiaro */
-}
-
-.book-diary-subtitle {
-  margin-top: 20px;
+    text-align: center;
+    color: #F28B82;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
 .book-diary-label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
 }
 
-.book-diary-input,
-.book-diary-textarea {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.book-diary-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.book-diary-search-results,
-.book-diary-reviews-list {
-  list-style-type: none;
-  padding: 0;
+.book-diary-search-results {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
 }
 
-.book-diary-search-item,
-.book-diary-review-item {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  background-color: #ffffff; /* Bianco per la lista dei risultati */
-  cursor: pointer;
-  transition: background-color 0.3s;
+.book-diary-search-item {
+    background-color: #F9F9F9;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
 
 .book-diary-search-item:hover {
-  background-color: #f0f0f0; /* Colore grigio chiaro al passaggio del mouse */
-}
-
-.star-gold {
-  color: gold;
-}
-
-.star-gray {
-  color: lightgray;
-}
-
-.book-diary-save-button,
-.book-diary-delete-button {
-  padding: 10px 15px;
-  margin-top: 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #f28b82; /* Stesso colore del titolo */
-  color: white;
-  font-weight: bold;
-}
-
-.book-diary-save-button:hover,
-.book-diary-delete-button:hover {
-  background-color: #c75b53; /* Colore più scuro al passaggio del mouse */
+    background-color: #F2F2F2;
 }
 
 .book-diary-selected-book {
-  margin: 20px 0;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #F9F9F9;
+}
+
+.book-diary-selected-title {
+    font-size: 20px;
+    color: #333;
+    text-align: center; 
 }
 
 .book-diary-thumbnail {
-  max-width: 100px;
-  margin-right: 10px;
+    max-width: 100%;
+    height: auto;
+    margin: 10px 0;
+}
+
+.book-diary-note {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.rating-container {
+    margin-bottom: 10px;
+    display: flex; 
+    justify-content: center; 
+}
+
+.star {
+    cursor: pointer;
+    color: #FFD700; /* Colore dorato */
+    font-size: 24px;
+    margin-right: 5px;
+}
+
+button {
+    background-color: #F28B82;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    width: 100%;
+    max-width: 200px; 
+    margin: 0 auto; 
+}
+
+button:hover {
+    background-color: #D16F6F;
+}
+
+.personal-notes-link {
+    display: inline-block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: midnightblue;
+    font-size: 16px;
+    font-family: "Baloo 2";
+    margin: 0 auto; 
+}
+
+.personal-notes-link:hover {
+    text-decoration: underline;
 }

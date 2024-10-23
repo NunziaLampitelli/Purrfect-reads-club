@@ -1,57 +1,55 @@
 .personal-page-container {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra gli elementi orizzontalmente */
+  align-items: center; 
   margin: 2rem auto;
   max-width: 80vw;
 }
 
 .profile-info {
   display: flex;
-  flex-direction: column; /* Layout verticale per immagine e titolo */
+  flex-direction: column; 
   align-items: center;
 }
 
 .cat-profile-pic {
   max-width: 20%;
-  height: auto; /* Mantiene il rapporto di aspetto */
+  height: auto; 
   border-radius: 50%;
   border: 2px solid black;
 }
 
 h1 {
   text-align: center;
-  margin: 1rem 0; /* Margine sopra e sotto il titolo */
+  margin: 1rem 0; 
 }
 
 .button-list {
-  list-style-type: none; /* Rimuove i punti elenco */
-  padding: 0; /* Rimuove il padding predefinito */
+  list-style-type: none;
+  padding: 0; 
 }
 
 .read-books-button, .delete-button {
   color: black;
-  padding: 8px 12px; /* Leggermente meno padding */
+  padding: 8px 12px; 
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  width: 100%; /* Larghezza totale */
-  max-width: 250px; /* Larghezza massima per i pulsanti */
+  width: 100%; 
+  max-width: 250px; 
   text-align: center;
-  margin: 0.5rem 0; /* Margine tra i pulsanti */
+  margin: 0.5rem 0; 
   font-family: "Baloo 2";
   font-size: large;
   border: solid 2px transparent;
 }
 
-/* Pulsante di lettura: Tonalità pastello verde chiaro */
 .read-books-button {
-  background-color: #FFE08B; /* Verde pastello */
+  background-color: #FFE08B; 
 }
 
-/* Pulsante di cancellazione: Tonalità pastello blu chiaro */
 .delete-button {
-  background-color: #A4B8E1; /* Blu pastello */
+  background-color: #A4B8E1; 
 }
 
 .read-books-button:hover, .delete-button:hover {
@@ -60,17 +58,17 @@ h1 {
 }
 
 .logout-button {
-  background-color: #ff4d4d94; /* Colore di sfondo per il pulsante di logout */
+  background-color: #ff4d4d94; 
   color: black;
-  padding: 8px 15px; /* Ridotto il padding */
+  padding: 8px 15px; 
   border: solid 2px transparent;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 1rem; /* Margine sopra il pulsante di logout */
+  margin-top: 1rem; 
   font-family: "Baloo 2";
   font-size: large;
 }
 
 .logout-button:hover {
-  background-color: #F28B82; /* Colore più scuro al passaggio del mouse */
+  background-color: #F28B82; 
 }
