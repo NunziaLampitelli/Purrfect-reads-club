@@ -12,7 +12,7 @@ function BookDiary() {
 	const [note, setNote] = useState<string>("");
 	const [rating, setRating] = useState<number>(0);
 
-//to retrevie from local storage
+	// Retrieve from local storage
 	useEffect(() => {
 		const savedReviews = JSON.parse(
 			localStorage.getItem("book-reviews") || "[]"
@@ -22,21 +22,39 @@ function BookDiary() {
 
 	const fetchBooks = async (query: string) => {
 		if (query.length > 2) {
-			const response = await fetch(
-				`https://www.googleapis.com/books/v1/volumes?q=${query}`
-			);
-			const data = await response.json();
-			const books: IBook[] = data.items.map((item: any) => ({
-				id: item.id,
-				volumeInfo: {
-					title: item.volumeInfo.title,
-					authors: item.volumeInfo.authors || [],
-					imageLinks: {
-						thumbnail: item.volumeInfo.imageLinks?.thumbnail || "",
-					},
-				},
-			}));
-			setSearchResults(books);
+			try {
+				const response = await fetch(
+					`https://www.googleapis.com/books/v1/volumes?q=${query}`
+				);
+
+				if (!response.ok) {
+					if (response.status === 429) {
+						alert("Too many requests. Please try again later.");
+						return; // stops the function if it gets the 429 from the APi request
+					}
+					const errorData = await response.json();
+					throw new Error(errorData.error || "Unknown error occurred");
+				}
+
+				const data = await response.json();
+				const books: IBook[] = data.items
+					? data.items.map((item: any) => ({
+							id: item.id,
+							volumeInfo: {
+								title: item.volumeInfo.title,
+								authors: item.volumeInfo.authors || [],
+								imageLinks: {
+									thumbnail: item.volumeInfo.imageLinks?.thumbnail || "",
+								},
+							},
+					  }))
+					: [];
+
+				setSearchResults(books);
+			} catch (error: any) {
+				console.error("Error fetching books:", error);
+				alert(`Error fetching books: ${error.message}`);
+			}
 		} else {
 			setSearchResults([]);
 		}
@@ -71,7 +89,7 @@ function BookDiary() {
 						(favorite: IBook) => favorite.id === selectedBook.id
 					)
 				) {
-					storedFavorites.push(selectedBook); 
+					storedFavorites.push(selectedBook);
 					localStorage.setItem("favorites", JSON.stringify(storedFavorites));
 				}
 			}
@@ -84,13 +102,13 @@ function BookDiary() {
 	};
 
 	return (
-		<div className="book-diary-container">
-			<h1 className="book-diary-title">Your Book Diary</h1>
+		<div className="diary-container">
+			<h1 className="diary-title">Your Book Diary</h1>
 
-			<label className="book-diary-label">Search for a book:</label>
-			<div className="dropdown-container">
+			<label className="diary-label">Search for a book:</label>
+			<div className="search-dropdown-container">
 				<input
-					className="book-diary-input"
+					className="diary-input"
 					type="text"
 					value={searchTerm}
 					onChange={(event) => setSearchTerm(event.target.value)}
@@ -98,11 +116,11 @@ function BookDiary() {
 				/>
 
 				{searchResults.length > 0 && !selectedBook && (
-					<ul className="book-diary-search-results">
+					<ul className="search-results">
 						{searchResults.map((book) => (
 							<li
 								key={book.id}
-								className="book-diary-search-item"
+								className="search-item"
 								onClick={() => {
 									setSelectedBook(book);
 									setSearchTerm(book.volumeInfo.title);
@@ -118,24 +136,24 @@ function BookDiary() {
 			</div>
 
 			{selectedBook && (
-				<div className="book-diary-selected-book">
-					<h4 className="book-diary-selected-title">Selected Book</h4>
+				<div className="selected-book">
+					<h4 className="selected-title">Selected Book</h4>
 					<p>
 						<strong>Title:</strong> {selectedBook.volumeInfo.title}
 					</p>
 					<img
 						src={selectedBook.volumeInfo.imageLinks?.thumbnail || ""}
 						alt={selectedBook.volumeInfo.title}
-						className="book-diary-thumbnail"
+						className="book-thumbnail"
 					/>
 
 					<textarea
 						value={note}
 						onChange={(e) => setNote(e.target.value)}
 						placeholder="Write your note here..."
-						className="book-diary-note"
+						className="diary-note"
 					/>
-					<div className="rating-container">
+					<div className="rating-area">
 						{[1, 2, 3, 4, 5].map((star) => (
 							<span
 								key={star}
@@ -146,12 +164,14 @@ function BookDiary() {
 							</span>
 						))}
 					</div>
-					<button onClick={handleSaveReview}>Save Review</button>
+					<button className="save-review-button" onClick={handleSaveReview}>
+						Save Review
+					</button>
 				</div>
 			)}
 
-			<Link to="/personal-notes" className="personal-notes-link">
-				Personal Notes
+			<Link to="/personal-notes" className="notes-link">
+				To Personal Notes
 			</Link>
 		</div>
 	);

@@ -40,7 +40,7 @@ function handleLogin(event: React.FormEvent) {
 
 			{loggedInUsername ? (
 				<div>
-					<h2>You are already logged in {loggedInUsername}! Meow!</h2>
+					<h2 className="already-logged">You are already logged in {loggedInUsername}! Meow!</h2>
 				</div>
 			) : (
 				<form className="login-form" onSubmit={handleLogin}>

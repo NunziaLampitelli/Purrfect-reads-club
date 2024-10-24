@@ -1,10 +1,4 @@
-import {
-	createContext,
-	useContext,
-	useState,
-	ReactNode,
-	useEffect,
-} from "react";
+import { createContext,	useContext,	useState,	ReactNode,	useEffect,} from "react";
 
 interface UserContextType {
 	username: string | null;
@@ -15,6 +9,7 @@ interface UserContextType {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
+// hook 
 export const useUser = () => {
 	const context = useContext(UserContext);
 	if (!context) {

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Delius+Swash+Caps&display=swap');
+
+.personal-notes-container {
+  font-family: "Delius Swash Caps";
+}
+
+.personal-notes-list {
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.personal-notes-item {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.personal-notes-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 20px,
+    rgba(173, 216, 230, 0.5) 20px,
+    rgba(173, 216, 230, 0.5) 21px
+  );
+  z-index: 0;
+}
+
+.personal-notes-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 1;
+  margin-right: 1rem;
+  width: 100%;
+}
+
+.personal-notes-item h4,
+.personal-notes-item p,
+.personal-notes-item img {
+  position: relative;
+  z-index: 1;
+}
+
+.review-actions {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.action-button, .delete-review-button, .save-button {
+  color: black;
+  font-family: "Baloo 2", cursive;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  padding: 8px 12px;
+  margin: 0.5rem 0;
+  cursor: pointer;
+  transition: background-color 0.2s, border 0.2s;
+}
+
+.action-button {
+  background-color: #A0D4FF;
+  color: black
+}
+
+.save-button,
+.delete-review-button {
+  background-color: #B3EBA0;
+  color: black;
+}
+
+.save-button:hover,
+.delete-review-button:hover,
+.action-button:hover {
+  border: 2px solid black;
+}
+
+.save-button:hover {
+  background-color: #FFEBA0;
+}
+
+.delete-review-button:hover {
+  background-color: #FFE0A0;
+}
+
+.action-button:hover {
+  background-color: #A0D4FF;
+}
+
+.personal-notes-thumbnail {
+  width: 150px;
+  height: auto;
+  border-radius: 5px;
+  border: solid 2px black;
+  margin-left: 4rem;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.personal-notes-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-left: 1rem;
+  width: 100%;
+}
+
+.personal-notes-title {
+  font-family: "Marianne", sans-serif, Arial, Helvetica, sans-serif; 
+  font-size: 4rem; 
+  text-align: center; 
+  margin-block: 2rem; 
+  text-shadow: 0px 4px 4px rgba(255, 111, 97, 1);
+}

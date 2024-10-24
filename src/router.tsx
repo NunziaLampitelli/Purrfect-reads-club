@@ -25,7 +25,7 @@ function AppRouter() {
 			<UserProvider>
 				<SearchProvider>
 					<Routes>
-						<Route path="/" element={<PageContainer />}>
+						<Route path="/" element={<PageContainer />}> {/*this was needed so that the container could be in all the pages and the content insied of it for layout*/}
 							<Route index element={<Homepage />} />
 							<Route path="login" element={<LoginPage />} />
 							<Route path="register" element={<RegisterPage />} />

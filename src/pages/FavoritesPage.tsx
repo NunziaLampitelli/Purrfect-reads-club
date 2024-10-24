@@ -36,12 +36,12 @@ function FavoritesPage() {
 	};
 
 	if (favorites.length === 0) {
-		return <p>No favorite books found.</p>;
+		return <p>No favorite books yet.</p>;
 	}
 
 	return (
 		<div className="favorite-books-page">
-			<h1>Favorite Books</h1>
+			<p className="favorite-page-title">Furvourite Books</p>
 			<div className="favorite-book-list">
 				<ul className="favorite-grid-container">
 					{favorites
@@ -67,18 +67,20 @@ function FavoritesPage() {
 							</li>
 						))}
 				</ul>
-				<div className="favorite-pagination">
-					<button onClick={handlePreviousPage} disabled={currentPage === 1}>
-						<img src={leftArrow} alt="left-arrow" />
-					</button>
-					<span>{`Page ${currentPage} of ${totalPages}`}</span>
-					<button
-						onClick={handleNextPage}
-						disabled={currentPage === totalPages}
-					>
-						<img src={rightArrow} alt="right-arrow" />
-					</button>
-				</div>
+				{favorites.length > itemsPerPage && ( 
+					<div className="favorite-pagination">
+						<button onClick={handlePreviousPage} disabled={currentPage === 1}>
+							<img src={leftArrow} alt="left-arrow" />
+						</button>
+						<span>{`Page ${currentPage} of ${totalPages}`}</span>
+						<button
+							onClick={handleNextPage}
+							disabled={currentPage === totalPages}
+						>
+							<img src={rightArrow} alt="right-arrow" />
+						</button>
+					</div>
+				)}
 			</div>
 		</div>
 	);

@@ -116,10 +116,10 @@ return (
         <strong>Genre:</strong> {categories?.join(", ") || "No genre available"}
       </p>
             <div className="button-container">
-        <button onClick={toggleFavorite}>
+        <button className="info-page-button" onClick={toggleFavorite}>
           {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
         </button>
-        <button onClick={shareBook}>
+        <button  className="info-page-button" onClick={shareBook}>
           {shareButtonText}
         </button>
       </div>

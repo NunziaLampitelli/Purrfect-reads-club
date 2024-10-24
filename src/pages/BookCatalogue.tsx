@@ -124,7 +124,7 @@ function BookCatalogue() {
 						</div>
 					</>
 				) : (
-					<p className="no-found-book">No books found</p>
+					<p className="no-found-book">No books found yet</p>
 				)}
 			</div>
 		</div>

@@ -10,6 +10,7 @@
   max-width: 100vw;
   box-sizing: border-box;
 }
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -25,7 +26,7 @@
 
 .login-form label {
   margin-bottom: 5px; 
-  font-family: "Marianne";
+  font-family: "Marianne", Arial, Verdana;
   font-size: 3rem;
   text-align: center; 
   text-shadow: 0 4px 4px rgba(242, 139, 130, 1);

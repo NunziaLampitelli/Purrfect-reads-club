@@ -49,11 +49,10 @@ p {
   margin-top: 1rem;
 }
 
-button {
-  background-color: #ff6b6b;
+.info-page-button {
+  background-color: #f79898;
   color: white;
   padding: 5px 10px;
-  border: none;
   border-radius: 5px;
   cursor: pointer;
   width: 45%; 
@@ -63,12 +62,15 @@ button {
   font-family: "Baloo 2";
   font-size: large;
   color: rgba(0, 0, 0, 0.736);
+  border: 2px solid transparent;
 }
 
-button:hover {
+.info-page-button:hover {
   border: solid 2px black;
   color: black;
+  background-color: #ff6b6b;
 }
+
 @media (min-width: 768px) {
   .book-info-page-container {
     flex-direction: row; 

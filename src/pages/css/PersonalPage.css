@@ -29,46 +29,48 @@ h1 {
   padding: 0; 
 }
 
-.read-books-button, .delete-button {
+.read-books-button,
+.delete-button,
+.personal-notes-button,
+.log-out-button {
   color: black;
-  padding: 8px 12px; 
-  border: none;
+  padding: 8px 12px;
+  border: solid 2px transparent; 
   border-radius: 5px;
   cursor: pointer;
   width: 100%; 
-  max-width: 250px; 
+  min-width: 250px; 
   text-align: center;
-  margin: 0.5rem 0; 
+  margin: 0.5rem 0;
   font-family: "Baloo 2";
   font-size: large;
-  border: solid 2px transparent;
 }
 
 .read-books-button {
-  background-color: #FFE08B; 
+  background-color: #FFE08B;
 }
 
 .delete-button {
-  background-color: #A4B8E1; 
+  background-color: #A4B8E1;
 }
 
-.read-books-button:hover, .delete-button:hover {
+.personal-notes-button {
+  background-color: #F9A66D;
+}
+
+.log-out-button {
+  background-color: #B7C9A8;
+  max-width: 250px;
+}
+
+.read-books-button:hover,
+.delete-button:hover,
+.personal-notes-button:hover {
   border: solid 2px black;
-  color: black;
+  background-color: inherit;
 }
 
-.logout-button {
-  background-color: #ff4d4d94; 
-  color: black;
-  padding: 8px 15px; 
-  border: solid 2px transparent;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 1rem; 
-  font-family: "Baloo 2";
-  font-size: large;
-}
-
-.logout-button:hover {
-  background-color: #F28B82; 
+.log-out-button:hover {
+  background-color: transparent;
+  border: black 2px solid;
 }

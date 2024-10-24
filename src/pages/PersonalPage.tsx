@@ -42,7 +42,7 @@ return (
       <ul className="button-list">
         <li>
           <Link to="/book-diary">
-            <button className="read-books-button">Write a personal review</button>
+            <button className="read-books-button">Review a book</button>
           </Link>
         </li>
         <li>
@@ -51,12 +51,12 @@ return (
         </li>
         <li>
           <Link to="/delete-account">
-            <button className="delete-button">Do you want to delete your account?</button>
+            <button className="delete-button">Delete account</button>
           </Link>
         </li>
       </ul>
     </nav>
-    <button className="logout-button" onClick={handleLogout}>Logout</button>
+    <button className="log-out-button" onClick={handleLogout}>Logout</button>
   </div>
 );
 }
