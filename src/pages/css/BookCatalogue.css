@@ -1,3 +1,5 @@
+@import url('https://fonts.cdnfonts.com/css/marianne');
+
 .book-search {
   display: flex;
   flex-direction: column;
@@ -132,15 +134,14 @@
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  gap: 2rem 4rem;
+ display: flex;
+  flex-wrap: wrap;
   list-style-type: none;
   margin: 1rem auto;
   padding: 0 1rem;
   max-width: 80vw;
   box-sizing: border-box;
+  gap: 1rem;
 }
 
 .grid-item {
